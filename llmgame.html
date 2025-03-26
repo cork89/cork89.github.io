@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LLM Game</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+
+        h1 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+
+        p {
+            margin-bottom: 20px;
+        }
+
+        .game-description {
+            background-color: #eaf2f8;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #3498db;
+            margin-bottom: 25px;
+        }
+
+        .instructions {
+            background-color: #f0f7fa;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #2980b9;
+            margin-bottom: 20px;
+        }
+
+        .sentence {
+            background-color: #e8f8f5;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #16a085;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .final-story {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+            line-height: 1.8;
+        }
+
+        .final-story p {
+            text-indent: 2em;
+        }
+
+        code {
+            display: block;
+            background-color: #f8f8f8;
+            padding: 10px;
+            border-radius: 5px;
+            border-left: 3px solid #ccc;
+            white-space: pre-wrap;
+            margin: 10px 0;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>LLM Game</h1>
+
+    <div class="game-description">
+        <p>Game: start with a sentence, start a new chat, put in the instructions and provided sentence to have the LLM
+            generate another sentence. Repeat x10 (with JUST the latest sentence). Finally have the LLM edit the story
+            into something a bit more sane. Below is the initial request to the llm, with a sentence I created.</p>
+        <div class="instructions">
+            <p>Instructions</p>
+            <code>* Only respond with one sentence
+* Do not respond with more than one sentence
+* Use sentence provided to continue a story</code>
+        </div>
+        <div class="sentence">
+            <p>Provided sentence</p>
+            <code>The mallard while waddling besides his hen, noticed a large white floofy dog across the street, and flew over quacking as loud as his lungs could muster to protect his mate.</code>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>First [Response] Sentence</h2>
+        <div class="sentence">
+            <p>Provided sentence</p>
+            <code>The floofy dog, startled by the sudden commotion, tilted its head curiously and wagged its tail, unaware of the mallard's fierce determination.</code>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Second Sentence</h2>
+        <div class="sentence">
+            <p>Provided sentence</p>
+            <code>The mallard, flapping its wings with a loud quack, charged forward as if on a mission, causing the dog to bounce back playfully.</code>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Third Sentence</h2>
+        <div class="sentence">
+            <p>Provided sentence</p>
+            <code>The dog, tail wagging furiously, barked in excitement and began to chase the mallard across the grassy field.</code>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Fourth Sentence</h2>
+        <div class="sentence">
+            <p>Provided sentence</p>
+            <code>The mallard flapped its wings frantically, veering toward the shimmering pond as the dog closed the distance.</code>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Fifth Sentence</h2>
+        <div class="sentence">
+            <p>Provided sentence</p>
+            <code>Its webbed feet skimmed the water's surface just in time, sending ripples across the pond as the dog skidded to a halt on the muddy bank.</code>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Sixth Sentence</h2>
+        <div class="sentence">
+            <p>Provided sentence</p>
+            <code>The startled duck took flight, its wings beating furiously as it soared into the golden light of the setting sun.</code>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Seventh Sentence</h2>
+        <div class="sentence">
+            <p>Provided sentence</p>
+            <code>Below, the rippling water reflected the fiery hues of the sky, casting shimmering patterns that danced in the wake of its sudden departure.</code>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Eigth Sentence</h2>
+        <div class="sentence">
+            <p>Provided sentence</p>
+            <code>Above, the silhouette of a great bird soared into the fading light, its wings cutting through the air with a grace that seemed almost otherworldly.</code>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Ninth Sentence</h2>
+        <div class="sentence">
+            <p>Provided sentence</p>
+            <code>Below, the forest whispered in hushed tones, its ancient trees swaying as if bowing to the majestic creature above.</code>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Tenth Sentence</h2>
+        <div class="sentence">
+            <p>Above, the dragon's wings stretched wide, casting a shadow that danced across the forest floor like a
+                fleeting storm.</p>
+        </div>
+    </div>
+
+
+    <div class="section">
+        <h2>Final Chat</h2>
+        <div class="instructions">
+            <p>Final Instructions</p>
+            <code>* Edit this short story to be a bit more cohesive and less repetitive
+* You can reformat into paragraphs if you want</code>
+        </div>
+
+        <div class="sentence">
+            <p>Story</p>
+            <code>The mallard while waddling besides his hen, noticed a large white floofy dog across the street, and flew over quacking as loud as his lungs could muster to protect his mate.
+
+The floofy dog, startled by the sudden commotion, tilted its head curiously and wagged its tail, unaware of the mallard's fierce determination.
+
+The mallard, flapping its wings with a loud quack, charged forward as if on a mission, causing the dog to bounce back playfully. 
+
+The dog, tail wagging furiously, barked in excitement and began to chase the mallard across the grassy field.
+
+The mallard flapped its wings frantically, veering toward the shimmering pond as the dog closed the distance.
+
+The startled duck took flight, its wings beating furiously as it soared into the golden light of the setting sun.
+
+Below, the rippling water reflected the fiery hues of the sky, casting shimmering patterns that danced in the wake of its sudden departure.
+
+Above, the silhouette of a great bird soared into the fading light, its wings cutting through the air with a grace that seemed almost otherworldly.
+
+Below, the forest whispered in hushed tones, its ancient trees swaying as if bowing to the majestic creature above.
+
+Above, the dragon's wings stretched wide, casting a shadow that danced across the forest floor like a fleeting storm.</code>
+        </div>
+    </div>
+
+    <div class="final-story">
+        <h2>Result</h2>
+        <div class="sentence">
+            <code>The mallard, waddling beside his hen, noticed a large, white, floofy dog across the street. Without hesitation, he flew over, quacking as loudly as his lungs could muster, determined to protect his mate. His cries pierced the air, a bold declaration of his fierce resolve.</code>
+
+            <code>The dog, startled by the sudden commotion, tilted its head curiously and wagged its tail. It seemed more amused than alarmed, entirely unaware of the mallard's fiery determination. The duck, undeterred, flapped his wings and charged forward as if on a mission. The dog, in turn, bounced back playfully, its tail wagging with uncontainable excitement.</code>
+
+            <code>What began as a standoff quickly turned into a chase. The dog barked joyfully and bounded after the mallard, who flapped his wings frantically and veered toward a nearby shimmering pond. The grassy field blurred beneath them as the dog closed the distance, its energy boundless.</code>
+
+            <code>Sensing the danger, the mallard took flight, his wings beating furiously as he soared into the golden light of the setting sun. Below, the rippling water of the pond reflected the fiery hues of the sky, casting shimmering patterns that danced in the wake of his sudden departure. The dog skidded to a halt at the water's edge, barking after the retreating figure, its excitement undiminished.</code>
+
+            <code>High above, the silhouette of the mallard cut through the fading light, his wings moving with a grace that seemed almost otherworldly. The forest below whispered in hushed tones, its ancient trees swaying gently as if bowing to the majestic creature soaring overhead.</code>
+
+            <code>For a moment, the scene felt timeless, as if the mallard's flight had transformed him into something greater—a fleeting symbol of freedom and defiance. The dog, now a distant figure on the ground, watched in awe, its playful chase forgotten in the face of the mallard's triumphant escape.</code>
+        </div>
+    </div>
+</body>
+
+</html>
