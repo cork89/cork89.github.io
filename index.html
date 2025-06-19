@@ -109,6 +109,12 @@
             background: #444;
             transform: rotate(45deg);
             z-index: 1;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:hover::before {
+            border-radius: 50%;
+            transition: all 0.3s ease;
         }
 
         .timeline-item.left::before {
