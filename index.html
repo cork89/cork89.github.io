@@ -149,6 +149,17 @@
             --accent-color: #1abc9c;
         }
 
+        .timeline-title-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        img {
+            height: 50px;
+            margin-bottom: 10px;
+        }
+
         @media (max-width: 768px) {
             .timeline::before {
                 left: 20px;
@@ -174,14 +185,21 @@
     <div class="timeline">
         <div class="timeline-item left">
             <a href="https://reddit.com/r/redditguessr" class="timeline-box" target="_blank">
-                <h3 class="timeline-title">RedditGuessr</h3>
+                <div class="timeline-title-container">
+                    <img src="img/redditguessrcircle.png" />
+                    <h3 class="timeline-title">RedditGuessr</h3>
+                </div>
                 <p class="timeline-subtitle">Guessing game you play on Reddit 🤔</p>
             </a>
         </div>
 
         <div class="timeline-item right">
             <a href="https://hearteyesemoji.dev" class="timeline-box" target="_blank">
-                <h3 class="timeline-title">Connections Creator</h3>
+                <!-- <h3 class="timeline-title">Connections Creator</h3> -->
+                <div class="timeline-title-container">
+                    <h3 class="timeline-title">Connections Creator</h3>
+                    <img src="img/hearteyes.png" style="height:30px;" />
+                </div>
                 <p class="timeline-subtitle">A custom connections puzzle maker 🧩</p>
             </a>
         </div>
@@ -189,21 +207,30 @@
         <div class="timeline-item left">
             <a href="https://wordex.hearteyesemoji.dev/?type=fantasypics&words=augury%2Cwitchcraft" class="timeline-box"
                 target="_blank">
-                <h3 class="timeline-title">Wordex</h3>
+                <div class="timeline-title-container">
+                    <img src="img/wordex.png" />
+                    <h3 class="timeline-title">Wordex</h3>
+                </div>
                 <p class="timeline-subtitle">Find some words for inspiration 🙂</p>
             </a>
         </div>
 
         <div class="timeline-item right">
             <a href="https://github.com/cork89" class="timeline-box" target="_blank">
-                <h3 class="timeline-title">Github</h3>
+                <div class="timeline-title-container">
+                    <h3 class="timeline-title">Github</h3>
+                    <img src="img/github-mark.svg" style="height:30px;" />
+                </div>
                 <p class="timeline-subtitle">The other stuff 🧑🏻‍💻</p>
             </a>
         </div>
 
         <div class="timeline-item left">
             <a href="https://www.linkedin.com/in/sean-larabell-31328353/" class="timeline-box" target="_blank">
-                <h3 class="timeline-title">Linkedin</h3>
+                <div class="timeline-title-container">
+                    <img src="img/linkedin.svg" style="height:30px;" />
+                    <h3 class="timeline-title">Linkedin</h3>
+                </div>
                 <p class="timeline-subtitle">Me 👨🏻</p>
             </a>
         </div>
