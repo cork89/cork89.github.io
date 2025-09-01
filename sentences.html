@@ -9,47 +9,49 @@
         body {
             font-family: Arial, sans-serif;
             padding: 20px;
-            line-height: 1.8;
+            line-height: 1.6;
         }
 
         .sentence {
             display: inline-block;
-            padding: 4px 6px;
-            margin: 2px;
+            padding: 6px 10px;
+            margin: 6px 0;
+            border-radius: 12px;
             border: 2px solid transparent;
-            /* Prevents text shifting */
-            border-radius: 4px;
             cursor: pointer;
             user-select: none;
-            transition: border 0.2s ease;
+            transition: border 0.2s ease, background-color 0.2s ease;
+            background: white;
         }
 
-        /* Selected state will get a colored border */
         .selected {
             border-color: var(--border-color, black);
+        }
+
+        #paragraph {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
         }
     </style>
 </head>
 
 <body>
     <h2>Selectable Sentences</h2>
-    <p id="paragraph"></p>
+    <div id="paragraph"></div>
 
     <script>
         const paragraphText =
-            "This is the first sentence. Here is the second one. And this is the third sentence. Finally, we have the last sentence.";
-
-        // Different border colors for each sentence
+            "On December 17, 1903, near Kitty Hawk, North Carolina, Orville and Wilbur Wright achieved the first sustained, controlled flight of a powered aircraft. Their biplane, the Wright Flyer, made four short flights that day, with Orville taking the controls for the inaugural 12-second, 120-foot journey. This groundbreaking feat, the culmination of years of meticulous experimentation and scientific inquiry into aerodynamics, proved that heavier-than-air flight was possible, forever changing transportation, warfare, and human perception of the world."
         const borderColors = ["#e74c3c", "#3498db", "#27ae60", "#f39c12", "#8e44ad"];
 
         const paragraphEl = document.getElementById("paragraph");
 
-        // Split into sentences
         const sentences = paragraphText.match(/[^.!?]+[.!?]/g);
 
         sentences.forEach((sentence, i) => {
-            const span = document.createElement("span");
-            span.textContent = sentence.trim() + " ";
+            const span = document.createElement("div");
+            span.textContent = sentence.trim();
             span.classList.add("sentence");
             span.style.setProperty(
                 "--border-color",
@@ -60,22 +62,18 @@
 
         let isDragging = false;
 
-        // Select the first sentence by default
         const firstSentence = paragraphEl.querySelector(".sentence");
         if (firstSentence) {
             firstSentence.classList.add("selected");
         }
 
         function selectSentence(target) {
-            // Remove selection from all
             document.querySelectorAll(".sentence").forEach((s) => {
                 s.classList.remove("selected");
             });
-            // Add selection to the clicked one
             target.classList.add("selected");
         }
 
-        // Handle click and drag selection
         paragraphEl.addEventListener("mousedown", (e) => {
             if (e.target.classList.contains("sentence")) {
                 selectSentence(e.target);
