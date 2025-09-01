@@ -9,19 +9,29 @@
         body {
             font-family: Arial, sans-serif;
             padding: 20px;
-            line-height: 1.6;
+            line-height: 1.8;
         }
 
         .sentence {
             display: inline-block;
-            padding: 6px 10px;
-            margin: 6px 0;
-            border-radius: 12px;
+            padding: 4px 6px;
+            margin: 2px;
             border: 2px solid transparent;
+            border-radius: 4px;
             cursor: pointer;
             user-select: none;
-            transition: border 0.2s ease, background-color 0.2s ease;
-            background: white;
+            transition: border 0.2s ease;
+        }
+
+        .sentence2 {
+            display: inline;
+            padding: 4px 6px;
+            margin: 2px;
+            border: 2px solid transparent;
+            border-radius: 4px;
+            cursor: pointer;
+            user-select: none;
+            transition: border 0.2s ease;
         }
 
         .selected {
@@ -32,37 +42,65 @@
 
 <body>
     <h2>Selectable Sentences</h2>
-    <div id="paragraph"></div>
+    <h3>Option 1</h3>
+    <p id="paragraph"></p>
+    <h3>Option 2</h3>
+    <p id="paragraph2"></p>
 
     <script>
         const paragraphText =
             "On December 17, 1903, near Kitty Hawk, North Carolina, Orville and Wilbur Wright achieved the first sustained, controlled flight of a powered aircraft. Their biplane, the Wright Flyer, made four short flights that day, with Orville taking the controls for the inaugural 12-second, 120-foot journey. This groundbreaking feat, the culmination of years of meticulous experimentation and scientific inquiry into aerodynamics, proved that heavier-than-air flight was possible, forever changing transportation, warfare, and human perception of the world."
+
         const borderColors = ["#e74c3c", "#3498db", "#27ae60", "#f39c12", "#8e44ad"];
 
         const paragraphEl = document.getElementById("paragraph");
+        const paragraphEl2 = document.getElementById("paragraph2");
 
         const sentences = paragraphText.match(/[^.!?]+[.!?]/g);
 
         sentences.forEach((sentence, i) => {
-            const span = document.createElement("div");
-            span.textContent = sentence.trim();
+            const span = document.createElement("span");
+            span.textContent = sentence.trim() + " ";
             span.classList.add("sentence");
             span.style.setProperty(
                 "--border-color",
                 borderColors[i % borderColors.length]
             );
             paragraphEl.appendChild(span);
+
+            const span2 = document.createElement("span");
+            span2.textContent = sentence.trim() + " ";
+            span2.classList.add("sentence2");
+            span2.style.setProperty(
+                "--border-color",
+                borderColors[i % borderColors.length]
+            );
+            paragraphEl2.appendChild(span2);
         });
 
         let isDragging = false;
 
+        // Select the first sentence by default
         const firstSentence = paragraphEl.querySelector(".sentence");
         if (firstSentence) {
             firstSentence.classList.add("selected");
         }
 
+        const firstSentence2 = paragraphEl2.querySelector(".sentence2");
+        if (firstSentence2) {
+            firstSentence2.classList.add("selected");
+        }
+
         function selectSentence(target) {
             document.querySelectorAll(".sentence").forEach((s) => {
+                s.classList.remove("selected");
+            });
+            target.classList.add("selected");
+        }
+
+
+        function selectSentence2(target) {
+            document.querySelectorAll(".sentence2").forEach((s) => {
                 s.classList.remove("selected");
             });
             target.classList.add("selected");
@@ -78,6 +116,19 @@
         paragraphEl.addEventListener("mouseover", (e) => {
             if (isDragging && e.target.classList.contains("sentence")) {
                 selectSentence(e.target);
+            }
+        });
+
+        paragraphEl2.addEventListener("mousedown", (e) => {
+            if (e.target.classList.contains("sentence2")) {
+                selectSentence2(e.target);
+                isDragging = true;
+            }
+        });
+
+        paragraphEl2.addEventListener("mouseover", (e) => {
+            if (isDragging && e.target.classList.contains("sentence2")) {
+                selectSentence2(e.target);
             }
         });
 
