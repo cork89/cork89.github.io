@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Selectable Sentences</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            line-height: 1.8;
+        }
+
+        .sentence {
+            display: inline-block;
+            padding: 4px 6px;
+            margin: 2px;
+            border: 2px solid transparent;
+            /* Prevents text shifting */
+            border-radius: 4px;
+            cursor: pointer;
+            user-select: none;
+            transition: border 0.2s ease;
+        }
+
+        /* Selected state will get a colored border */
+        .selected {
+            border-color: var(--border-color, black);
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Selectable Sentences</h2>
+    <p id="paragraph"></p>
+
+    <script>
+        const paragraphText =
+            "This is the first sentence. Here is the second one. And this is the third sentence. Finally, we have the last sentence.";
+
+        // Different border colors for each sentence
+        const borderColors = ["#e74c3c", "#3498db", "#27ae60", "#f39c12", "#8e44ad"];
+
+        const paragraphEl = document.getElementById("paragraph");
+
+        // Split into sentences
+        const sentences = paragraphText.match(/[^.!?]+[.!?]/g);
+
+        sentences.forEach((sentence, i) => {
+            const span = document.createElement("span");
+            span.textContent = sentence.trim() + " ";
+            span.classList.add("sentence");
+            span.style.setProperty(
+                "--border-color",
+                borderColors[i % borderColors.length]
+            );
+            paragraphEl.appendChild(span);
+        });
+
+        let isDragging = false;
+
+        // Select the first sentence by default
+        const firstSentence = paragraphEl.querySelector(".sentence");
+        if (firstSentence) {
+            firstSentence.classList.add("selected");
+        }
+
+        function selectSentence(target) {
+            // Remove selection from all
+            document.querySelectorAll(".sentence").forEach((s) => {
+                s.classList.remove("selected");
+            });
+            // Add selection to the clicked one
+            target.classList.add("selected");
+        }
+
+        // Handle click and drag selection
+        paragraphEl.addEventListener("mousedown", (e) => {
+            if (e.target.classList.contains("sentence")) {
+                selectSentence(e.target);
+                isDragging = true;
+            }
+        });
+
+        paragraphEl.addEventListener("mouseover", (e) => {
+            if (isDragging && e.target.classList.contains("sentence")) {
+                selectSentence(e.target);
+            }
+        });
+
+        document.addEventListener("mouseup", () => {
+            isDragging = false;
+        });
+    </script>
+</body>
+
+</html>
